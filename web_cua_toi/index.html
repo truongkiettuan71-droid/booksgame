@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thư viện Truyện Việt 🌙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin:0;
+  padding:15px;
+  font-family: Arial, sans-serif;
+  background: #0b0c2c;
+  color: #fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  min-height:100vh;
+}
+
+/* Chữ sáng như sao */
+h2,h3 { 
+  text-align:center; 
+  text-shadow: 0 0 8px #fff;
+}
+
+/* Inputs + button */
+input, button { 
+  font-size:1rem; padding:10px; margin:8px; border-radius:5px; cursor:pointer;
+}
+
+/* Nút quiz */
+button.quiz-btn { width:100%; margin:5px 0; }
+
+/* Khối sách */
+.book {
+  background: rgba(255,255,255,0.1);
+  padding:15px;
+  margin:10px 0;
+  border-radius:12px;
+  cursor:pointer;
+  width:90%;
+  text-align:center;
+  box-shadow:0 0 10px rgba(255,255,255,0.2);
+  transition: transform 0.2s;
+}
+.book:hover { transform: scale(1.05); }
+
+/* Các khối lớn */
+#loginDiv, #home, #reader, #quizDiv, #leaderboard {
+  width:90%;
+  max-width:600px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Nội dung đọc truyện */
+#reader {
+  background: rgba(0,0,50,0.4);
+  padding:15px;
+  border-radius:10px;
+}
+#content { white-space: pre-wrap; line-height:1.5; margin:10px 0; }
+
+/* Quiz */
+#quizContent { width:100%; }
+#quizTimer { text-align:center; margin:10px 0; font-weight:bold; font-size:1.1rem; }
+
+/* Leaderboard */
+#leaderboardHome p { margin:5px 0; }
+
+</style>
+</head>
+<body>
+
+<!-- Login -->
+<div id="loginDiv">
+  <h2>Chào mừng bạn đến Thư viện Truyện Việt 🌙</h2>
+  <input type="text" id="username" placeholder="Nhập tên của bạn">
+  <button onclick="login()">Bắt đầu</button>
+</div>
+
+<!-- Trang chính -->
+<div id="home">
+  <h2>📚 Thư viện Truyện Việt</h2>
+  <div id="welcome"></div>
+  <div id="list"></div>
+
+  <!-- Bảng xếp hạng -->
+  <h3>Bảng xếp hạng tích lũy</h3>
+  <div id="leaderboardHome"></div>
+
+  <button onclick="logout()">Đăng xuất</button>
+</div>
+
+<!-- Đọc truyện -->
+<div id="reader">
+  <button onclick="back()">⬅ Quay lại</button>
+  <h3 id="title"></h3>
+  <div id="content"></div>
+  <button onclick="startQuiz()">Bắt đầu câu hỏi</button>
+</div>
+
+<!-- Quiz -->
+<div id="quizDiv">
+  <h3 id="quizTitle"></h3>
+  <div id="quizContent"></div>
+  <div id="quizTimer"></div>
+</div>
+
+<!-- Leaderboard sau quiz -->
+<div id="leaderboard">
+  <h2>Kết quả</h2>
+  <div id="total"></div>
+  <button onclick="backToHome()">Quay về Trang chủ</button>
+</div>
+
+<!-- Nhạc nền login + home -->
+<audio id="loginMusic" src="login.mp3" loop></audio>
+<audio id="homeMusic" src="home.mp3" loop></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
